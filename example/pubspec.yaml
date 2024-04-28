@@ -1,0 +1,25 @@
+name: help_page_example
+description: "Help page example"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.3.4
+  flutter: ^3.19.6
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  help_page:
+    path: ..
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: 3.0.2
+
+flutter:
+  uses-material-design: true
