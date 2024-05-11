@@ -176,53 +176,55 @@ class _HelpPageState extends State<HelpPage> {
       appBar: AppBar(
         title: Text(widget.appTitle)
       ),
-      body: Center(
-        child: PageView.builder(
-          itemBuilder: (context, index) {
-            return SingleChildScrollView(
-              key: PageStorageKey('help-tab:$index'),
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: FutureBuilder<String>(
-                future: tabs[index].html(context),
-                  builder: (context, htmlData) {
-                    var html = htmlData.data;
-                    if(html == null)
-                      return const CircularProgressIndicator();
-                    return HtmlWidget(
-                      html,
-                      onTapUrl: (url) async {
-                        if(!await canLaunchUrlString(url))
-                          return false;
-                        await launchUrlString(url, mode: LaunchMode.externalApplication);
-                        return true;
-                      },
-                      customStylesBuilder: (element) {
-                        if(element.localName == 'ul')
-                          return {'padding-left': '15px'};
-                        return null;
-                      },
-                      customWidgetBuilder: (element) {
-                        if(element.localName == 'icon' && element.attributes.containsKey('code')) {
-                          var code = int.tryParse(element.attributes['code'] ?? '') ?? 0;
-                          return InlineCustomWidget(
-                            alignment: PlaceholderAlignment.middle,
-                            child: Icon(IconData(code, fontFamily: 'MaterialIcons')),
-                          );
-                        }
-                        return null;
-                      },
-                    );
-                  }
+      body: SafeArea(
+        child: Center(
+          child: PageView.builder(
+            itemBuilder: (context, index) {
+              return SingleChildScrollView(
+                key: PageStorageKey('help-tab:$index'),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: FutureBuilder<String>(
+                  future: tabs[index].html(context),
+                    builder: (context, htmlData) {
+                      var html = htmlData.data;
+                      if(html == null)
+                        return const CircularProgressIndicator();
+                      return HtmlWidget(
+                        html,
+                        onTapUrl: (url) async {
+                          if(!await canLaunchUrlString(url))
+                            return false;
+                          await launchUrlString(url, mode: LaunchMode.externalApplication);
+                          return true;
+                        },
+                        customStylesBuilder: (element) {
+                          if(element.localName == 'ul')
+                            return {'padding-left': '15px'};
+                          return null;
+                        },
+                        customWidgetBuilder: (element) {
+                          if(element.localName == 'icon' && element.attributes.containsKey('code')) {
+                            var code = int.tryParse(element.attributes['code'] ?? '') ?? 0;
+                            return InlineCustomWidget(
+                              alignment: PlaceholderAlignment.middle,
+                              child: Icon(IconData(code, fontFamily: 'MaterialIcons')),
+                            );
+                          }
+                          return null;
+                        },
+                      );
+                    }
+                  )
                 )
-              )
-            );
-          },
-          itemCount: tabs.length,
-          controller: pageController,
-          onPageChanged: (value) {
-            indexValue.value = value;
-          }
+              );
+            },
+            itemCount: tabs.length,
+            controller: pageController,
+            onPageChanged: (value) {
+              indexValue.value = value;
+            }
+          )
         )
       ),
       bottomNavigationBar: ValueListenableBuilder(
