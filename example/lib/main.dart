@@ -30,9 +30,10 @@ class MyApp extends StatelessWidget {
         license: HelpPageLicense.gpl,
         author: 'Алексей Парфёнов (Alexey Parfenov) aka ZXED',
         authorWebsite: 'https://alkatrazstudio.net/',
-        libraries: const [
-          HelpPagePackage(name: 'help_page', url: 'https://github.com/z80maniac/flutter_help_page', license: HelpPageLicense.mpl),
-          HelpPageFlutterPackage('flutter_lints', HelpPageLicense.bsd3)
+        libraries: [
+          HelpPagePackage.foss(name: 'help_page', url: 'https://github.com/z80maniac/flutter_help_page', license: HelpPageLicense.mpl),
+          HelpPagePackage.flutter('flutter_lints', HelpPageLicense.bsd3),
+          const HelpPagePackage(name: 'CustomLib', url: 'https://example.com', licenseName: 'CustomLicense', licenseUrl: 'https://example.com')
         ],
         assets: const []
       )

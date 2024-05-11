@@ -83,26 +83,36 @@ class HelpPagePackage {
   const HelpPagePackage({
     required this.name,
     required this.url,
-    required this.license
+    required this.licenseName,
+    required this.licenseUrl
   });
 
   final String name;
   final String url;
-  final HelpPageLicense license;
+  final String licenseName;
+  final String licenseUrl;
+
+  HelpPagePackage.foss({
+    required this.name,
+    required this.url,
+    required HelpPageLicense license
+  }):
+    licenseName = license.name,
+    licenseUrl = license.url;
+
+  HelpPagePackage.flutter(this.name, HelpPageLicense license) :
+    url = 'https://pub.dev/packages/$name',
+    licenseName = license.name,
+    licenseUrl = license.url;
 
   _KeyValRow _toKeyValRow() {
     return _KeyValRow(
       key: name,
       keyLink: url,
-      val: license.name,
-      valLink: license.url
+      val: licenseName,
+      valLink: licenseUrl
     );
   }
-}
-
-class HelpPageFlutterPackage extends HelpPagePackage {
-  const HelpPageFlutterPackage(String name, HelpPageLicense license)
-    : super(name: name, url: 'https://pub.dev/packages/$name', license: license);
 }
 
 //////
@@ -309,7 +319,7 @@ class _HelpPageState extends State<HelpPage> {
           </thead>
           <tbody>
           ${_KeyValRow.renderRows([
-            const HelpPagePackage(name: 'Flutter', url: 'https://flutter.dev', license: HelpPageLicense.bsd3),
+            HelpPagePackage.foss(name: 'Flutter', url: 'https://flutter.dev', license: HelpPageLicense.bsd3),
             ...widget.libraries
           ].map((package) => package._toKeyValRow()).toList())}
           </tbody>
@@ -331,7 +341,7 @@ class _HelpPageState extends State<HelpPage> {
           </thead>
           <tbody>
           ${_KeyValRow.renderRows([
-            const HelpPagePackage(name: 'Material design icons', url: 'https://developers.google.com/fonts/docs/material_icons', license: HelpPageLicense.bsd3),
+            HelpPagePackage.foss(name: 'Material design icons', url: 'https://developers.google.com/fonts/docs/material_icons', license: HelpPageLicense.bsd3),
             ...widget.assets
           ].map((package) => package._toKeyValRow()).toList())}
           </tbody>
