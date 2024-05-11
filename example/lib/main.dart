@@ -25,8 +25,11 @@ class MyApp extends StatelessWidget {
         githubProject: 'flutter_help_page',
         manualHtml: '''
           <p>Hello, world!</p>
-          <p>I feel the <icon code="${Icons.ac_unit.codePoint}"></icon> in northern winds.</p>
+          <p>I feel the <widget name="iciness"></widget> in northern winds.</p>
         ''',
+        manualHtmlWidgets: const {
+          'iciness': Icon(Icons.ac_unit)
+        },
         license: HelpPageLicense.gpl,
         author: 'Алексей Парфёнов (Alexey Parfenov) aka ZXED',
         authorWebsite: 'https://alkatrazstudio.net/',

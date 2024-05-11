@@ -124,6 +124,7 @@ class HelpPage extends StatefulWidget {
     required this.githubProject,
     this.githubBranch = 'master',
     required this.manualHtml,
+    this.manualHtmlWidgets = const {},
     this.changelogFilename = 'CHANGELOG.md',
     this.showGooglePlayLink = false,
     required this.license,
@@ -138,6 +139,7 @@ class HelpPage extends StatefulWidget {
   final String githubProject;
   final String githubBranch;
   final String manualHtml;
+  final Map<String, Widget> manualHtmlWidgets;
   final String changelogFilename;
   final bool showGooglePlayLink;
   final HelpPageLicense license;
@@ -204,11 +206,12 @@ class _HelpPageState extends State<HelpPage> {
                           return null;
                         },
                         customWidgetBuilder: (element) {
-                          if(element.localName == 'icon' && element.attributes.containsKey('code')) {
-                            var code = int.tryParse(element.attributes['code'] ?? '') ?? 0;
+                          if(element.localName == 'widget') {
+                            var name = element.attributes['name']!;
+                            var inlineWidget = widget.manualHtmlWidgets[name]!;
                             return InlineCustomWidget(
                               alignment: PlaceholderAlignment.middle,
-                              child: Icon(IconData(code, fontFamily: 'MaterialIcons')),
+                              child: inlineWidget
                             );
                           }
                           return null;
