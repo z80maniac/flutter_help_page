@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
         manualHtmlWidgets: const {
           'iciness': Icon(Icons.ac_unit)
         },
-        license: HelpPageLicense.gpl,
+        license: HelpPageLicense.gpl3,
         author: 'Алексей Парфёнов (Alexey Parfenov) aka ZXED',
         authorWebsite: 'https://alkatrazstudio.net/',
         libraries: [
-          HelpPagePackage.foss(name: 'help_page', url: 'https://github.com/z80maniac/flutter_help_page', license: HelpPageLicense.mpl),
+          HelpPagePackage.foss(name: 'help_page', url: 'https://github.com/z80maniac/flutter_help_page', license: HelpPageLicense.mpl2),
           HelpPagePackage.flutter('flutter_lints', HelpPageLicense.bsd3),
           const HelpPagePackage(name: 'CustomLib', url: 'https://example.com', licenseName: 'CustomLicense', licenseUrl: 'https://example.com')
         ],

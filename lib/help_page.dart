@@ -66,8 +66,8 @@ class _KeyValRow {
 }
 
 enum HelpPageLicense {
-  gpl('GPLv3', 'https://www.gnu.org/licenses/gpl-3.0.txt'),
-  mpl('MPL 2.0', 'https://www.mozilla.org/en-US/MPL/2.0/'),
+  gpl3('GPLv3', 'https://www.gnu.org/licenses/gpl-3.0.txt'),
+  mpl2('MPL 2.0', 'https://www.mozilla.org/en-US/MPL/2.0/'),
   bsd2('BSD 2-Clause', 'https://opensource.org/licenses/BSD-2-Clause'),
   bsd3('BSD 3-Clause', 'https://opensource.org/licenses/BSD-3-Clause'),
   mit('MIT', 'https://opensource.org/licenses/MIT'),
