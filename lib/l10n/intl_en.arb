@@ -1,0 +1,28 @@
+{
+  "@@locale": "en",
+
+  "manualHeader": "Manual",
+
+  "aboutHeader": "About",
+  "aboutWebsite": "Website",
+  "aboutGooglePlay": "Google Play page",
+  "aboutBug": "File a bug report",
+  "aboutChangelog": "Changelog",
+  "aboutBuildDate": "Build date",
+  "aboutGitHash": "Git hash",
+  "aboutPackage": "Package name",
+  "aboutBuildSignature": "Build signature",
+  "aboutBuildNumber": "Build number",
+  "aboutAuthor": "Author",
+  "aboutAuthorWebsite": "Author's website",
+
+  "licensesHeader": "Licenses",
+  "licensesAppHtml": "{appTitle} itself is licensed under {appLicenseHtml}.",
+  "licensesLibraries": "Libraries",
+  "licensesLibrariesDetailsHtml": "Below is the list of all libraries that are directly used by {appTitle}. These libraries can use some other libraries. Tap on a library name to go to its website. Tap on a license name to read the license text online.",
+  "licensesHeaderLibrary": "Library",
+  "licensesHeaderLicense": "License",
+  "licensesAssets": "Assets",
+  "licensesAssetsHtml": "Below is the list of all assets that are directly used by {appTitle}. Some libraries that are used in {appTitle} may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.",
+  "licensesHeaderAsset": "Asset"
+}

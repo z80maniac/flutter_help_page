@@ -1,0 +1,28 @@
+{
+  "@@locale": "ru",
+
+  "manualHeader": "Руководство",
+
+  "aboutHeader": "О программе",
+  "aboutWebsite": "Сайт",
+  "aboutGooglePlay": "Страница на Google Play",
+  "aboutBug": "Сообщить об ошибке",
+  "aboutChangelog": "Список изменений",
+  "aboutBuildDate": "Дата сборки",
+  "aboutGitHash": "Хэш коммита в git",
+  "aboutPackage": "Имя пакета",
+  "aboutBuildSignature": "Сигнатура сборки",
+  "aboutBuildNumber": "Номер сборки",
+  "aboutAuthor": "Автор",
+  "aboutAuthorWebsite": "Сайт автора",
+
+  "licensesHeader": "Лицензии",
+  "licensesAppHtml": "{appTitle} лицензирован под {appLicenseHtml}.",
+  "licensesLibraries": "Библиотеки",
+  "licensesLibrariesDetailsHtml": "Ниже представлен список всех библиотек, которые напрямую используются в {appTitle}. Эти библиотеки могут в свою очередь использовать другие библиотеки. Нажмите на название библиотеки, чтобы перейти на её сайт. Нажмите на название лицензии, чтобы прочитать её текст в интернете.",
+  "licensesHeaderLibrary": "Библиотека",
+  "licensesHeaderLicense": "Лицензия",
+  "licensesAssets": "Ресурсы",
+  "licensesAssetsHtml": "Ниже представлен список всех ресурсов, которые напрямую используются в {appTitle}. Некоторые библиотеки, используемые в {appTitle} могут содержать и/или использовать другие ресурсы. Нажмите на название ресурса, чтобы перейти на его сайт. Нажмите на название лицензии, чтобы прочитать её текст в интернете.",
+  "licensesHeaderAsset": "Ресурс"
+}

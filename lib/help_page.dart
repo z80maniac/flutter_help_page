@@ -4,9 +4,13 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:intl/intl.dart';
+
+import 'generated/l10n.dart';
+
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -174,95 +178,102 @@ class _HelpPageState extends State<HelpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.appTitle)
-      ),
-      body: SafeArea(
-        child: Center(
-          child: PageView.builder(
-            itemBuilder: (context, index) {
-              return SingleChildScrollView(
-                key: PageStorageKey('help-tab:$index'),
-                child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: FutureBuilder<String>(
-                  future: tabs[index].html(context),
-                    builder: (context, htmlData) {
-                      var html = htmlData.data;
-                      if(html == null)
-                        return const CircularProgressIndicator();
-                      return HtmlWidget(
-                        html,
-                        onTapUrl: (url) async {
-                          if(!await canLaunchUrlString(url))
-                            return false;
-                          await launchUrlString(url, mode: LaunchMode.externalApplication);
-                          return true;
-                        },
-                        customStylesBuilder: (element) {
-                          if(element.localName == 'ul')
-                            return {'padding-left': '15px'};
-                          return null;
-                        },
-                        customWidgetBuilder: (element) {
-                          if(element.localName == 'widget') {
-                            var name = element.attributes['name']!;
-                            var inlineWidget = widget.manualHtmlWidgets[name]!;
-                            return InlineCustomWidget(
-                              alignment: PlaceholderAlignment.middle,
-                              child: inlineWidget
-                            );
-                          }
-                          return null;
-                        },
-                      );
-                    }
+    return Localizations.override(
+      context: context,
+      delegates: const [
+        S.delegate,
+        ...GlobalMaterialLocalizations.delegates
+      ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.appTitle)
+        ),
+        body: SafeArea(
+          child: Center(
+            child: PageView.builder(
+              itemBuilder: (context, index) {
+                return SingleChildScrollView(
+                  key: PageStorageKey('help-tab:$index'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: FutureBuilder<String>(
+                    future: tabs[index].html(context),
+                      builder: (context, htmlData) {
+                        var html = htmlData.data;
+                        if(html == null)
+                          return const CircularProgressIndicator();
+                        return HtmlWidget(
+                          html,
+                          onTapUrl: (url) async {
+                            if(!await canLaunchUrlString(url))
+                              return false;
+                            await launchUrlString(url, mode: LaunchMode.externalApplication);
+                            return true;
+                          },
+                          customStylesBuilder: (element) {
+                            if(element.localName == 'ul')
+                              return {'padding-left': '15px'};
+                            return null;
+                          },
+                          customWidgetBuilder: (element) {
+                            if(element.localName == 'widget') {
+                              var name = element.attributes['name']!;
+                              var inlineWidget = widget.manualHtmlWidgets[name]!;
+                              return InlineCustomWidget(
+                                alignment: PlaceholderAlignment.middle,
+                                child: inlineWidget
+                              );
+                            }
+                            return null;
+                          },
+                        );
+                      }
+                    )
                   )
-                )
-              );
-            },
-            itemCount: tabs.length,
-            controller: pageController,
-            onPageChanged: (value) {
-              indexValue.value = value;
-            }
+                );
+              },
+              itemCount: tabs.length,
+              controller: pageController,
+              onPageChanged: (value) {
+                indexValue.value = value;
+              }
+            )
           )
+        ),
+        bottomNavigationBar: ValueListenableBuilder(
+          valueListenable: indexValue,
+          builder: (context, int value, child) {
+            return BottomNavigationBar(
+              items: tabs.map((tab) => BottomNavigationBarItem(
+                icon: Icon(tab.icon),
+                label: tab.label(context)
+              )).toList(),
+              currentIndex: value,
+              onTap: (newIndex) {
+                pageController.animateToPage(
+                  newIndex,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.linear
+                );
+              }
+            );
+          }
         )
-      ),
-      bottomNavigationBar: ValueListenableBuilder(
-        valueListenable: indexValue,
-        builder: (context, int value, child) {
-          return BottomNavigationBar(
-            items: tabs.map((tab) => BottomNavigationBarItem(
-              icon: Icon(tab.icon),
-              label: tab.label(context)
-            )).toList(),
-            currentIndex: value,
-            onTap: (newIndex) {
-              pageController.animateToPage(
-                newIndex,
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.linear
-              );
-            }
-          );
-        }
       )
     );
   }
 
   _Tab _manualTab() {
     return _Tab(
-      label: (context) => 'Manual',
+      label: (context) => S.of(context).manualHeader,
       icon: Icons.menu_book,
-      htmlFunc: (context) async => '<h1 style="text-align: center">Manual</h1>\n${widget.manualHtml}'
+      htmlFunc: (context) async => '<h1 style="text-align: center">${_esc(S.of(context).manualHeader)}</h1>\n${widget.manualHtml}'
     );
   }
 
   _Tab _aboutTab() {
     return _Tab(
-      label: (context) => 'About',
+      label: (context) => S.of(context).aboutHeader,
       icon: Icons.info,
       htmlFunc: (context) async {
         var info = await PackageInfo.fromPlatform();
@@ -276,22 +287,22 @@ class _HelpPageState extends State<HelpPage> {
           <h1 style="text-align: center">${_esc(widget.appTitle)}</h1>
           <div style="text-align: center; padding-bottom: 50"><strong><em>v${_esc(info.version)}</em></strong></div>
           ${_KeyValRow.renderParagraphs([
-            _KeyValRow(key: 'Website', val: appBaseUrl, valLink: appBaseUrl),
+            _KeyValRow(key: S.of(context).aboutWebsite, val: appBaseUrl, valLink: appBaseUrl),
             if(widget.showGooglePlayLink)
-              _KeyValRow(key: 'Google Play page', val: 'https://play.google.com/store/apps/details?id=${info.packageName}', valLink: 'https://play.google.com/store/apps/details?id=${info.packageName}'),
-            _KeyValRow(key: 'File a bug report', val: '$appBaseUrl/issues', valLink: '$appBaseUrl/issues'),
-            _KeyValRow(key: 'Changelog', val: '$appBaseUrl/blob/${widget.githubBranch}/${widget.changelogFilename}', valLink: '$appBaseUrl/blob/master/${widget.changelogFilename}'),
+              _KeyValRow(key: S.of(context).aboutGooglePlay, val: 'https://play.google.com/store/apps/details?id=${info.packageName}', valLink: 'https://play.google.com/store/apps/details?id=${info.packageName}'),
+            _KeyValRow(key: S.of(context).aboutBug, val: '$appBaseUrl/issues', valLink: '$appBaseUrl/issues'),
+            _KeyValRow(key: S.of(context).aboutChangelog, val: '$appBaseUrl/blob/${widget.githubBranch}/${widget.changelogFilename}', valLink: '$appBaseUrl/blob/master/${widget.changelogFilename}'),
             if(buildStr != null)
-              _KeyValRow(key: 'Build date', val: buildStr),
+              _KeyValRow(key: S.of(context).aboutBuildDate, val: buildStr),
             if(appGitHash.isNotEmpty)
-              _KeyValRow(key: 'Git hash', val: appGitHash, valLink: '$appBaseUrl/tree/$appGitHash'),
-            _KeyValRow(key: 'Package name', val: info.packageName),
-            _KeyValRow(key: 'Build signature', val: info.buildSignature),
-            _KeyValRow(key: 'Build number', val: info.buildNumber),
+              _KeyValRow(key: S.of(context).aboutGitHash, val: appGitHash, valLink: '$appBaseUrl/tree/$appGitHash'),
+            _KeyValRow(key: S.of(context).aboutPackage, val: info.packageName),
+            _KeyValRow(key: S.of(context).aboutBuildSignature, val: info.buildSignature),
+            _KeyValRow(key: S.of(context).aboutBuildNumber, val: info.buildNumber),
             if(widget.author.isNotEmpty)
-              _KeyValRow(key: 'Author', val: widget.author),
+              _KeyValRow(key: S.of(context).aboutAuthor, val: widget.author),
             if(widget.authorWebsite.isNotEmpty)
-              _KeyValRow(key: "Author's website", val: widget.authorWebsite, valLink: widget.authorWebsite)
+              _KeyValRow(key: S.of(context).aboutAuthorWebsite, val: widget.authorWebsite, valLink: widget.authorWebsite)
           ])}
         ''';
       }
@@ -300,26 +311,21 @@ class _HelpPageState extends State<HelpPage> {
 
   _Tab _licensesTab() {
     return _Tab(
-      label: (context) => 'Licenses',
+      label: (context) => S.of(context).licensesHeader,
       icon: Icons.copyright,
       htmlFunc: (context) async => '''
-        <h1 style="text-align: center">Licenses</h1>
-  
-        <p>${_esc(widget.appTitle)} itself is licensed under ${_KeyValRow.renderLink(widget.license.name, widget.license.url)}</p>
-  
-        <h2>Libraries</h2>
-        <p>
-          Below is the list of all libraries that are directly used by ${_esc(widget.appTitle)}.
-          These libraries can use some other libraries.
-          Tap on a library name to go to its website.
-          Tap on a license name to read the license text online.
-        </p>
-  
+        <h1 style="text-align: center">${_esc(S.of(context).licensesHeader)}</h1>
+
+        <p>${S.of(context).licensesAppHtml(_esc(widget.appTitle), _KeyValRow.renderLink(widget.license.name, widget.license.url))}</p>
+
+        <h2>${_esc(S.of(context).licensesLibraries)}</h2>
+        <p>${S.of(context).licensesLibrariesDetailsHtml(_esc(widget.appTitle))}</p>
+
         <table>
           <thead>
             <tr>
-              <th>Library</th>
-              <th>License</th>
+              <th>${_esc(S.of(context).licensesHeaderLibrary)}</th>
+              <th>${_esc(S.of(context).licensesHeaderLicense)}</th>
             </tr>
           </thead>
           <tbody>
@@ -329,19 +335,15 @@ class _HelpPageState extends State<HelpPage> {
           ].map((package) => package._toKeyValRow()).toList())}
           </tbody>
         </table>
-  
-        <h2>Assets</h2>
-        <p>
-          Below is the list of all assets that are directly used by ${_esc(widget.appTitle)}.
-          Some libraries that are used in ${_esc(widget.appTitle)} may contain and/or use other assets.
-          Tap on an asset name to go to its website. Tap on a license name to read the license text online.
-        </p>
-  
+
+        <h2>${_esc(S.of(context).licensesAssets)}</h2>
+        <p>${S.of(context).licensesAssetsHtml(_esc(widget.appTitle))}</p>
+
         <table>
           <thead>
             <tr>
-              <th>Asset</th>
-              <th>License</th>
+              <th>${_esc(S.of(context).licensesHeaderAsset)}</th>
+              <th>${_esc(S.of(context).licensesHeaderLicense)}</th>
             </tr>
           </thead>
           <tbody>

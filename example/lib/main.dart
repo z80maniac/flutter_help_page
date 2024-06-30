@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:help_page/help_page.dart';
 
@@ -15,6 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Help page example',
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: const [
+        Locale.fromSubtags(languageCode: 'en'),
+        Locale.fromSubtags(languageCode: 'ru'),
+      ],
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
         brightness: Brightness.dark
