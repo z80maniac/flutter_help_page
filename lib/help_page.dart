@@ -76,6 +76,7 @@ enum HelpPageLicense {
   bsd3('BSD 3-Clause', 'https://opensource.org/licenses/BSD-3-Clause'),
   mit('MIT', 'https://opensource.org/licenses/MIT'),
   apache2('Apache License 2.0', 'https://www.apache.org/licenses/LICENSE-2.0.txt'),
+  ccZero1('CC0 1.0 Universal', 'https://creativecommons.org/publicdomain/zero/1.0/legalcode'),
   ;
 
   final String name;
