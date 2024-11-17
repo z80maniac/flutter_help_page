@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "${appTitle} itself is licensed under ${appLicenseHtml}.";
 
   static String m1(appTitle) =>
-      "Below is the list of all assets that are directly used by ${appTitle}. Some libraries that are used in ${appTitle} may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.";
+      "Below is the list of all third-party assets that are directly used by ${appTitle}. Some libraries that are used in ${appTitle} may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.";
 
   static String m2(appTitle) =>
       "Below is the list of all libraries that are directly used by ${appTitle}. These libraries can use some other libraries. Tap on a library name to go to its website. Tap on a license name to read the license text online.";

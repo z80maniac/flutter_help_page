@@ -250,10 +250,10 @@ class S {
     );
   }
 
-  /// `Below is the list of all assets that are directly used by {appTitle}. Some libraries that are used in {appTitle} may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.`
+  /// `Below is the list of all third-party assets that are directly used by {appTitle}. Some libraries that are used in {appTitle} may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.`
   String licensesAssetsHtml(Object appTitle) {
     return Intl.message(
-      'Below is the list of all assets that are directly used by $appTitle. Some libraries that are used in $appTitle may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.',
+      'Below is the list of all third-party assets that are directly used by $appTitle. Some libraries that are used in $appTitle may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.',
       name: 'licensesAssetsHtml',
       desc: '',
       args: [appTitle],
