@@ -173,7 +173,7 @@ class _HelpPageState extends State<HelpPage> {
   ];
 
   String get appBaseUrl => 'https://github.com/${widget.githubAuthor}/${widget.githubProject}';
-  
+
   static const appBuildTimestamp = int.fromEnvironment('APP_BUILD_TIMESTAMP');
   static const appGitHash = String.fromEnvironment('APP_GIT_HASH');
 
@@ -332,7 +332,8 @@ class _HelpPageState extends State<HelpPage> {
           <tbody>
           ${_KeyValRow.renderRows([
             HelpPagePackage.foss(name: 'Flutter', url: 'https://flutter.dev', license: HelpPageLicense.bsd3),
-            ...widget.libraries
+            ...widget.libraries,
+            HelpPagePackage.foss(name: 'flutter_help_page', url: 'https://github.com/z80maniac/flutter_help_page', license: HelpPageLicense.mpl2)
           ].map((package) => package._toKeyValRow()).toList())}
           </tbody>
         </table>
