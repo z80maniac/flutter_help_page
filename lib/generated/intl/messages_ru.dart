@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Список изменений"),
         "aboutGitHash":
             MessageLookupByLibrary.simpleMessage("Хэш коммита в git"),
+        "aboutGitHubReleases":
+            MessageLookupByLibrary.simpleMessage("Релизы на GitHub"),
         "aboutGooglePlay":
             MessageLookupByLibrary.simpleMessage("Страница на Google Play"),
         "aboutHeader": MessageLookupByLibrary.simpleMessage("О программе"),

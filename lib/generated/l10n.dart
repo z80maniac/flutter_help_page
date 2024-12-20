@@ -90,6 +90,16 @@ class S {
     );
   }
 
+  /// `Releases on GitHub`
+  String get aboutGitHubReleases {
+    return Intl.message(
+      'Releases on GitHub',
+      name: 'aboutGitHubReleases',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `File a bug report`
   String get aboutBug {
     return Intl.message(

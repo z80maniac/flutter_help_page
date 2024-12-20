@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Build signature"),
         "aboutChangelog": MessageLookupByLibrary.simpleMessage("Changelog"),
         "aboutGitHash": MessageLookupByLibrary.simpleMessage("Git hash"),
+        "aboutGitHubReleases":
+            MessageLookupByLibrary.simpleMessage("Releases on GitHub"),
         "aboutGooglePlay":
             MessageLookupByLibrary.simpleMessage("Google Play page"),
         "aboutHeader": MessageLookupByLibrary.simpleMessage("About"),

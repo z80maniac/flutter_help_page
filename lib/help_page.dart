@@ -8,11 +8,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:intl/intl.dart';
-
-import 'generated/l10n.dart';
-
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
+import 'generated/l10n.dart';
 
 class _Tab {
   final String Function(BuildContext) label;
@@ -132,6 +131,7 @@ class HelpPage extends StatefulWidget {
     this.manualHtmlWidgets = const {},
     this.changelogFilename = 'CHANGELOG.md',
     this.showGooglePlayLink = false,
+    this.showGitHubReleasesLink = false,
     required this.license,
     this.author = '',
     this.authorWebsite = '',
@@ -147,6 +147,7 @@ class HelpPage extends StatefulWidget {
   final Map<String, Widget> manualHtmlWidgets;
   final String changelogFilename;
   final bool showGooglePlayLink;
+  final bool showGitHubReleasesLink;
   final HelpPageLicense license;
   final String author;
   final String authorWebsite;
@@ -291,6 +292,8 @@ class _HelpPageState extends State<HelpPage> {
             _KeyValRow(key: S.of(context).aboutWebsite, val: appBaseUrl, valLink: appBaseUrl),
             if(widget.showGooglePlayLink)
               _KeyValRow(key: S.of(context).aboutGooglePlay, val: 'https://play.google.com/store/apps/details?id=${info.packageName}', valLink: 'https://play.google.com/store/apps/details?id=${info.packageName}'),
+            if(widget.showGitHubReleasesLink)
+              _KeyValRow(key: S.of(context).aboutGitHubReleases, val: '$appBaseUrl/releases', valLink: '$appBaseUrl/releases'),
             _KeyValRow(key: S.of(context).aboutBug, val: '$appBaseUrl/issues', valLink: '$appBaseUrl/issues'),
             _KeyValRow(key: S.of(context).aboutChangelog, val: '$appBaseUrl/blob/${widget.githubBranch}/${widget.changelogFilename}', valLink: '$appBaseUrl/blob/master/${widget.changelogFilename}'),
             if(buildStr != null)
