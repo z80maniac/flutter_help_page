@@ -130,7 +130,6 @@ class HelpPage extends StatefulWidget {
     required this.manualHtml,
     this.manualHtmlWidgets = const {},
     this.changelogFilename = 'CHANGELOG.md',
-    this.showGooglePlayLink = false,
     this.showGitHubReleasesLink = false,
     required this.license,
     this.author = '',
@@ -146,7 +145,6 @@ class HelpPage extends StatefulWidget {
   final String manualHtml;
   final Map<String, Widget> manualHtmlWidgets;
   final String changelogFilename;
-  final bool showGooglePlayLink;
   final bool showGitHubReleasesLink;
   final HelpPageLicense license;
   final String author;
@@ -290,8 +288,6 @@ class _HelpPageState extends State<HelpPage> {
           <div style="text-align: center; padding-bottom: 50"><strong><em>v${_esc(info.version)}</em></strong></div>
           ${_KeyValRow.renderParagraphs([
             _KeyValRow(key: S.of(context).aboutWebsite, val: appBaseUrl, valLink: appBaseUrl),
-            if(widget.showGooglePlayLink)
-              _KeyValRow(key: S.of(context).aboutGooglePlay, val: 'https://play.google.com/store/apps/details?id=${info.packageName}', valLink: 'https://play.google.com/store/apps/details?id=${info.packageName}'),
             if(widget.showGitHubReleasesLink)
               _KeyValRow(key: S.of(context).aboutGitHubReleases, val: '$appBaseUrl/releases', valLink: '$appBaseUrl/releases'),
             _KeyValRow(key: S.of(context).aboutBug, val: '$appBaseUrl/issues', valLink: '$appBaseUrl/issues'),
