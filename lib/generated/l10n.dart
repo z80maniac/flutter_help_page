@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,42 +57,17 @@ class S {
 
   /// `Manual`
   String get manualHeader {
-    return Intl.message(
-      'Manual',
-      name: 'manualHeader',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Manual', name: 'manualHeader', desc: '', args: []);
   }
 
   /// `About`
   String get aboutHeader {
-    return Intl.message(
-      'About',
-      name: 'aboutHeader',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('About', name: 'aboutHeader', desc: '', args: []);
   }
 
   /// `Website`
   String get aboutWebsite {
-    return Intl.message(
-      'Website',
-      name: 'aboutWebsite',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Google Play page`
-  String get aboutGooglePlay {
-    return Intl.message(
-      'Google Play page',
-      name: 'aboutGooglePlay',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Website', name: 'aboutWebsite', desc: '', args: []);
   }
 
   /// `Releases on GitHub`
@@ -132,12 +112,7 @@ class S {
 
   /// `Git hash`
   String get aboutGitHash {
-    return Intl.message(
-      'Git hash',
-      name: 'aboutGitHash',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Git hash', name: 'aboutGitHash', desc: '', args: []);
   }
 
   /// `Package name`
@@ -172,12 +147,7 @@ class S {
 
   /// `Author`
   String get aboutAuthor {
-    return Intl.message(
-      'Author',
-      name: 'aboutAuthor',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Author', name: 'aboutAuthor', desc: '', args: []);
   }
 
   /// `Author's website`
@@ -192,12 +162,7 @@ class S {
 
   /// `Licenses`
   String get licensesHeader {
-    return Intl.message(
-      'Licenses',
-      name: 'licensesHeader',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Licenses', name: 'licensesHeader', desc: '', args: []);
   }
 
   /// `{appTitle} itself is licensed under {appLicenseHtml}.`
@@ -252,12 +217,7 @@ class S {
 
   /// `Assets`
   String get licensesAssets {
-    return Intl.message(
-      'Assets',
-      name: 'licensesAssets',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Assets', name: 'licensesAssets', desc: '', args: []);
   }
 
   /// `Below is the list of all third-party assets that are directly used by {appTitle}. Some libraries that are used in {appTitle} may contain and/or use other assets. Tap on an asset name to go to its website. Tap on a license name to read the license text online.`

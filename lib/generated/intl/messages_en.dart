@@ -31,35 +31,33 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutAuthor": MessageLookupByLibrary.simpleMessage("Author"),
-        "aboutAuthorWebsite":
-            MessageLookupByLibrary.simpleMessage("Author\'s website"),
-        "aboutBug": MessageLookupByLibrary.simpleMessage("File a bug report"),
-        "aboutBuildDate": MessageLookupByLibrary.simpleMessage("Build date"),
-        "aboutBuildNumber":
-            MessageLookupByLibrary.simpleMessage("Build number"),
-        "aboutBuildSignature":
-            MessageLookupByLibrary.simpleMessage("Build signature"),
-        "aboutChangelog": MessageLookupByLibrary.simpleMessage("Changelog"),
-        "aboutGitHash": MessageLookupByLibrary.simpleMessage("Git hash"),
-        "aboutGitHubReleases":
-            MessageLookupByLibrary.simpleMessage("Releases on GitHub"),
-        "aboutGooglePlay":
-            MessageLookupByLibrary.simpleMessage("Google Play page"),
-        "aboutHeader": MessageLookupByLibrary.simpleMessage("About"),
-        "aboutPackage": MessageLookupByLibrary.simpleMessage("Package name"),
-        "aboutWebsite": MessageLookupByLibrary.simpleMessage("Website"),
-        "licensesAppHtml": m0,
-        "licensesAssets": MessageLookupByLibrary.simpleMessage("Assets"),
-        "licensesAssetsHtml": m1,
-        "licensesHeader": MessageLookupByLibrary.simpleMessage("Licenses"),
-        "licensesHeaderAsset": MessageLookupByLibrary.simpleMessage("Asset"),
-        "licensesHeaderLibrary":
-            MessageLookupByLibrary.simpleMessage("Library"),
-        "licensesHeaderLicense":
-            MessageLookupByLibrary.simpleMessage("License"),
-        "licensesLibraries": MessageLookupByLibrary.simpleMessage("Libraries"),
-        "licensesLibrariesDetailsHtml": m2,
-        "manualHeader": MessageLookupByLibrary.simpleMessage("Manual")
-      };
+    "aboutAuthor": MessageLookupByLibrary.simpleMessage("Author"),
+    "aboutAuthorWebsite": MessageLookupByLibrary.simpleMessage(
+      "Author\'s website",
+    ),
+    "aboutBug": MessageLookupByLibrary.simpleMessage("File a bug report"),
+    "aboutBuildDate": MessageLookupByLibrary.simpleMessage("Build date"),
+    "aboutBuildNumber": MessageLookupByLibrary.simpleMessage("Build number"),
+    "aboutBuildSignature": MessageLookupByLibrary.simpleMessage(
+      "Build signature",
+    ),
+    "aboutChangelog": MessageLookupByLibrary.simpleMessage("Changelog"),
+    "aboutGitHash": MessageLookupByLibrary.simpleMessage("Git hash"),
+    "aboutGitHubReleases": MessageLookupByLibrary.simpleMessage(
+      "Releases on GitHub",
+    ),
+    "aboutHeader": MessageLookupByLibrary.simpleMessage("About"),
+    "aboutPackage": MessageLookupByLibrary.simpleMessage("Package name"),
+    "aboutWebsite": MessageLookupByLibrary.simpleMessage("Website"),
+    "licensesAppHtml": m0,
+    "licensesAssets": MessageLookupByLibrary.simpleMessage("Assets"),
+    "licensesAssetsHtml": m1,
+    "licensesHeader": MessageLookupByLibrary.simpleMessage("Licenses"),
+    "licensesHeaderAsset": MessageLookupByLibrary.simpleMessage("Asset"),
+    "licensesHeaderLibrary": MessageLookupByLibrary.simpleMessage("Library"),
+    "licensesHeaderLicense": MessageLookupByLibrary.simpleMessage("License"),
+    "licensesLibraries": MessageLookupByLibrary.simpleMessage("Libraries"),
+    "licensesLibrariesDetailsHtml": m2,
+    "manualHeader": MessageLookupByLibrary.simpleMessage("Manual"),
+  };
 }

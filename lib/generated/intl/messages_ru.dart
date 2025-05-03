@@ -31,37 +31,31 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "aboutAuthor": MessageLookupByLibrary.simpleMessage("Автор"),
-        "aboutAuthorWebsite":
-            MessageLookupByLibrary.simpleMessage("Сайт автора"),
-        "aboutBug": MessageLookupByLibrary.simpleMessage("Сообщить об ошибке"),
-        "aboutBuildDate": MessageLookupByLibrary.simpleMessage("Дата сборки"),
-        "aboutBuildNumber":
-            MessageLookupByLibrary.simpleMessage("Номер сборки"),
-        "aboutBuildSignature":
-            MessageLookupByLibrary.simpleMessage("Сигнатура сборки"),
-        "aboutChangelog":
-            MessageLookupByLibrary.simpleMessage("Список изменений"),
-        "aboutGitHash":
-            MessageLookupByLibrary.simpleMessage("Хэш коммита в git"),
-        "aboutGitHubReleases":
-            MessageLookupByLibrary.simpleMessage("Релизы на GitHub"),
-        "aboutGooglePlay":
-            MessageLookupByLibrary.simpleMessage("Страница на Google Play"),
-        "aboutHeader": MessageLookupByLibrary.simpleMessage("О программе"),
-        "aboutPackage": MessageLookupByLibrary.simpleMessage("Имя пакета"),
-        "aboutWebsite": MessageLookupByLibrary.simpleMessage("Сайт"),
-        "licensesAppHtml": m0,
-        "licensesAssets": MessageLookupByLibrary.simpleMessage("Ресурсы"),
-        "licensesAssetsHtml": m1,
-        "licensesHeader": MessageLookupByLibrary.simpleMessage("Лицензии"),
-        "licensesHeaderAsset": MessageLookupByLibrary.simpleMessage("Ресурс"),
-        "licensesHeaderLibrary":
-            MessageLookupByLibrary.simpleMessage("Библиотека"),
-        "licensesHeaderLicense":
-            MessageLookupByLibrary.simpleMessage("Лицензия"),
-        "licensesLibraries": MessageLookupByLibrary.simpleMessage("Библиотеки"),
-        "licensesLibrariesDetailsHtml": m2,
-        "manualHeader": MessageLookupByLibrary.simpleMessage("Руководство")
-      };
+    "aboutAuthor": MessageLookupByLibrary.simpleMessage("Автор"),
+    "aboutAuthorWebsite": MessageLookupByLibrary.simpleMessage("Сайт автора"),
+    "aboutBug": MessageLookupByLibrary.simpleMessage("Сообщить об ошибке"),
+    "aboutBuildDate": MessageLookupByLibrary.simpleMessage("Дата сборки"),
+    "aboutBuildNumber": MessageLookupByLibrary.simpleMessage("Номер сборки"),
+    "aboutBuildSignature": MessageLookupByLibrary.simpleMessage(
+      "Сигнатура сборки",
+    ),
+    "aboutChangelog": MessageLookupByLibrary.simpleMessage("Список изменений"),
+    "aboutGitHash": MessageLookupByLibrary.simpleMessage("Хэш коммита в git"),
+    "aboutGitHubReleases": MessageLookupByLibrary.simpleMessage(
+      "Релизы на GitHub",
+    ),
+    "aboutHeader": MessageLookupByLibrary.simpleMessage("О программе"),
+    "aboutPackage": MessageLookupByLibrary.simpleMessage("Имя пакета"),
+    "aboutWebsite": MessageLookupByLibrary.simpleMessage("Сайт"),
+    "licensesAppHtml": m0,
+    "licensesAssets": MessageLookupByLibrary.simpleMessage("Ресурсы"),
+    "licensesAssetsHtml": m1,
+    "licensesHeader": MessageLookupByLibrary.simpleMessage("Лицензии"),
+    "licensesHeaderAsset": MessageLookupByLibrary.simpleMessage("Ресурс"),
+    "licensesHeaderLibrary": MessageLookupByLibrary.simpleMessage("Библиотека"),
+    "licensesHeaderLicense": MessageLookupByLibrary.simpleMessage("Лицензия"),
+    "licensesLibraries": MessageLookupByLibrary.simpleMessage("Библиотеки"),
+    "licensesLibrariesDetailsHtml": m2,
+    "manualHeader": MessageLookupByLibrary.simpleMessage("Руководство"),
+  };
 }
